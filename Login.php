@@ -47,7 +47,7 @@
 			</div>
 			<div class="card-footer">
 			<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="criarConta.php">Sign Up</a>
+					Don't have an account?<a href="criaConta.php">Sign Up</a>
 				</div>
 				<?php if (isset($_GET["erro"]) && $_GET["erro"]==1): ?>
 					<div class="alert alert-warning" role="alert">E-mail ou senha inválidos</div>

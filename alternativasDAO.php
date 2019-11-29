@@ -1,49 +1,54 @@
-<?php
+<?php 
+
+require "config.php";
 
 class alternativasDAO{
+    
     public $texto;
-    public $idQuestao;
     public $correta;
-    private $conAlternativas;
+    public $idQuestao;
+    private $conAlternativa;
 
     function __construct(){
-        $this->conAlternativas = mysqli_connect("localhost","root","etecia", "projetopw");
+        $this->conAlternativa = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     }
-    public function apagar($id){
-        
-        $sql = "DELETE FROM alternativas WHERE id_alternativa=$id";
-        $rs = $this->conAlternativas->query($sql);
-        if ($rs) header("Location: /alternativas");
-        else echo $this->conAlternativas->error;
-    }
-    public function inserir(){
-                          
-        $sql = "INSERT INTO alternativas VALUES (0, '$this->texto', '$this->idQuestao', '$this->correta')"; 
-        $rs = $this->conAlternativas->query($sql);
-        if($rs)
+    public function inserirAlternativa(){
+        $sql = "INSERT INTO  alternativas  VALUES(0, '$this->texto','$this->correta', '$this->idQuestao')";
+        $rs = $this->conAlternativa->query($sql);
+        if($rs){
             header("Location: /alternativas");
-        else
-            echo $this->conAlternativas->error;
-    }
-        public function editar(){
-        $sql = "UPDATE alternativas SET texto='$this->texto', correta='$this->correta' WHERE idAlternativa=$this->id";
-        $rs = $this->con->query($sql);
-        if ($rs) 
-            header("Location: \alternativas?questao=$id");
-        else 
-            echo $this->con->error;
-    }
-    
-    public function buscaralternativas(){
-        
-        $sql = "SELECT * FROM alternativas";
-        $rs = $this->conAlternativas->query($sql);
-        while ($linha = $rs->fetch_object()){
-            $listaAlternativas[] = $linha;
+        } else{
+            echo $this->conAlternativa->error;
         }
-        return $listaAlternativas;
+    }
+    public function trocarAlternativas(){
+        $sql = "UPDATE alternativas SET texto WHERE idAlternativa = $id";
+        $rs = $this->conAlternativa->query($sql);
+        if($rs){
+            header("Location: /alternativas");
+        }
+        else{
+            echo $this->conAlternativa->error;
+        }
+    }
+    public function buscarAlternativas(){
+        $sql = "SELECT * FROM alternativas";
+        $rs = $this->conAlternativa->query($sql);
+        while($linha = $rs->fetch_object()){
+            $listaDeAlternativas[] = $linha;
+        }
+        return $listaDeAlternativas;
+    }
+    public function apagarAlternativas($idAlternativa){
+        $sql = "DELETE FROM alternativas WHERE idAlternativa = $id";
+        $rs = $this->conAlternativa->query($sql);
+        if($rs){
+            header("Location: /alternativas");
+        }
+        else{
+            echo $this->conAlternativa->error;
+        }
     }
 
 }
-
 ?>

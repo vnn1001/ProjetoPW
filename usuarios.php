@@ -1,9 +1,9 @@
 <?php
-require("verificaUsuario.php");
+
+require "verificaUsuario.php";
 
 include "UsuarioDAO.php";
-include "Alerta.php";
-
+include "alertas.php";
 $usuarioDAO = new UsuarioDAO();
 $lista = ($usuarioDAO->buscar());
 
@@ -21,14 +21,13 @@ include "menuLateral.php";
         <title>Usuários</title>
     </head>
     <body>
-    
-        <div class="col-10">
-            <?php mostrarAlerta("sucess");?>
-            <?php mostrarAlerta("danger");?>
 
+        <div class="col-10">
+        <?php mostrarAlerta("success");?>
             <h1>Usuários</h1>
             <button class="btn btn-dark" data-toggle="modal" data-target="#newmodal">
                 <i class="fas fa-user-plus">
+
                 </i> Novo usuário</button>
                         <br>
                         <br>
@@ -39,23 +38,23 @@ include "menuLateral.php";
                             <th>E-mail</th>
                             <th>Ações</th>
                         </tr>
-                        
-                        <?php foreach($lista as $users): ?>
+
+                        <?php foreach ($lista as $users): ?>
                         <tr>
-                            <td><?= $users->UserID?></td>
-                            <td><?= $users->Nome?></td>
-                            <td><?= $users->Email?></td>
+                            <td><?=$users->UserID?></td>
+                            <td><?=$users->Nome?></td>
+                            <td><?=$users->Email?></td>
                             <td>
-                                <button class="btn btn-dark"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-warning alterar-senha" data-id="<?= $users->UserID?>"><i class="fas fa-pen" data-toggle="modal" data-target="#modalsenha"></i></button>
-                                <a class="btn btn-danger" href="usercontrol.php?acao=apagar&id=<?= $users->UserID?>"><i class="fas fa-trash-alt"></i></a>
+                                <button class="btn btn-dark btn-editar"><i class="fas fa-pen"></i></button>
+                                <button class="btn btn-warning alterar-senha" data-id="<?=$users->UserID?>"><i class="fas fa-pen" data-toggle="modal" data-target="#modalsenha"></i></button>
+                                <a class="btn btn-danger" href="usercontrol.php?acao=apagar&id=<?=$users->UserID?>"><i class="fas fa-trash-alt"></i></a>
                             </td>
-                            
-                            
+
+
                         </tr>
-                        <?php endforeach ?>
+                        <?php endforeach?>
                     </table>
-        <!--modal-->          
+        <!--modal-->
         <div class="modal fade" id="newmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -101,11 +100,11 @@ include "menuLateral.php";
         <div class="modal-body">
         <form action="usercontrol.php?acao=trocaSenha" method="POST">
         <div class="input-group mb-3">
-                        
+
                     </div>
                     <input type="hidden" name="id" id="campo-id">
                     <div class="input-group mb-3">
-                    
+
                         <input type="text" name="senha" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
         </div>

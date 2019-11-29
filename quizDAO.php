@@ -1,7 +1,7 @@
 <?php
-/**
- * 
- */
+
+require "config.php";
+
 class quizDAO
 
 {
@@ -11,7 +11,7 @@ class quizDAO
 	private $conQuiz;
 
 	function __construct(){
-        $this->conQuiz = mysqli_connect("localhost","root","etecia", "projetopw");
+        $this->conQuiz = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     }
 	public function inserirQuiz(){
 		$sql = "INSERT INTO questions VALUES (0, '$this->Desafio', '$this->TDesafio')"; 
@@ -44,14 +44,6 @@ class quizDAO
         if ($rs) header("Location: /questoes");
         else echo $this->conQuiz->error;
 	}
-
-    public function buscarId(){
-        $sql = "SELECT * FROM questoes WHERE idQuestao=$this->id";
-        $rs = $this->con->query($sql);
-        if ($linha = $rs->fetch_object()){
-            $this->enunciado = $linha->enunciado;
-            $this->tipo = $linha->tipo;
-        }
 	
 }
 ?>

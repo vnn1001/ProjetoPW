@@ -23,7 +23,7 @@ switch ($acao) {
         break;
     
     default:
-        # code...
+        echo "Seu PC vai explodir mané...e tem coisa errada nesse código";
         break;
 }
 ?>

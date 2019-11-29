@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Nov-2019 às 02:28
+-- Generation Time: 01-Nov-2019 às 02:22
 -- Versão do servidor: 5.7.21-log
 -- versão do PHP: 7.3.1
 
@@ -29,20 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alternativas` (
-  `id_alternativa` int(11) NOT NULL,
+  `idAlternativa` int(11) NOT NULL,
   `texto` text NOT NULL,
-  `idQuestao` int(11) NOT NULL,
-  `correta` tinyint(1) NOT NULL
+  `correta` tinyint(4) NOT NULL,
+  `idQuestao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `alternativas`
---
-
-INSERT INTO `alternativas` (`id_alternativa`, `texto`, `idQuestao`, `correta`) VALUES
-(15, 'Apelido do Guilherme', 1, 0),
-(16, 'Nome verdadeiro do Matheus', 1, 0),
-(17, 'O que é Shoteiro?', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -61,7 +52,7 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`IDDesafio`, `Desafio`, `TDesafio`) VALUES
-(8, 'O que é Shoteiro ?', 'Alternativa');
+(3, 'bla', 'blu');
 
 -- --------------------------------------------------------
 
@@ -81,7 +72,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `Nome`, `Email`, `Senha`) VALUES
-(5, 'Mafeus', 'mafeus@etec.sp.gov.br', '192309aaddc500140db28668e1bbd8b5');
+(3, 'bla', 'blu', '4e8a1f3702ea40975a6bd7b06e558498');
 
 --
 -- Indexes for dumped tables
@@ -91,7 +82,8 @@ INSERT INTO `users` (`UserID`, `Nome`, `Email`, `Senha`) VALUES
 -- Indexes for table `alternativas`
 --
 ALTER TABLE `alternativas`
-  ADD PRIMARY KEY (`id_alternativa`);
+  ADD PRIMARY KEY (`idAlternativa`),
+  ADD KEY `idQuestao` (`idQuestao`);
 
 --
 -- Indexes for table `questions`
@@ -113,19 +105,29 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alternativas`
 --
 ALTER TABLE `alternativas`
-  MODIFY `id_alternativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idAlternativa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `IDDesafio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IDDesafio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `alternativas`
+--
+ALTER TABLE `alternativas`
+  ADD CONSTRAINT `FK_das_questoes` FOREIGN KEY (`idQuestao`) REFERENCES `questions` (`IDDesafio`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
