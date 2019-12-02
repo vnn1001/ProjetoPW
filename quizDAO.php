@@ -1,7 +1,8 @@
 <?php
-
+/**
+ * 
+ */
 require "config.php";
-
 class quizDAO
 
 {

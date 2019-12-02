@@ -25,7 +25,7 @@ switch ($acao){
     break;
 
     default:
-        echo "Tem erro no seu código? Você e vergonha da pofission!";
+        echo "Tem erro na seu codigo? Você e o vergonha da pofission!";
     break;
 }
 ?>
