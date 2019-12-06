@@ -1,6 +1,7 @@
 <?php 
 
 require "config.php";
+
 class alternativasDAO{
     
     public $texto;
@@ -8,14 +9,14 @@ class alternativasDAO{
     public $idQuestao;
     private $conAlternativa;
 
-function __construct(){
+    function __construct(){
         $this->conAlternativa = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     }
     public function inserirAlternativa(){
         $sql = "INSERT INTO  alternativas  VALUES(0, '$this->texto','$this->correta', '$this->idQuestao')";
         $rs = $this->conAlternativa->query($sql);
         if($rs){
-            header("Location: /alternativas?idQuestAl=". 'this->idQuestao');
+            header("Location: /alternativas");
         } else{
             echo $this->conAlternativa->error;
         }

@@ -32,7 +32,7 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <div class="my-2 my-lg-0">
-                <a class= "btn btn-primary" href="usecontrol.php?acao=sair" role="button">Pal no gato?</a>
+                <a class= "btn btn-primary" href="usecontrol.php?acao=sair" role="button">Guilherme é fofo</a>
             </div>
         </div>
     </nav>

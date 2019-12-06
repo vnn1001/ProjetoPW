@@ -59,9 +59,10 @@ include "menuLateral.php";?>
       <div class="modal-body">
     <form action="alternativascontrol.php?acao=inserirAlternativa" method="POST">
       <div class="input-group mb-3">
-        <input type="text" name="texto" class="form-control" placeholder="Escreva a Alternativa"  aria-describedby="basic-addon1">
-        <input type="text" name="correta" class="form-control" placeholder="Digite o tipo da questão..."  aria-describedby="basic-addon1">
-        <input type="hidden" value=<?php echo $_GET['idQuestAl']?> name= "idQuestao" class="form-control" >
+                    <input type="text" name="texto" class="form-control" placeholder="Escreva a Alternativa"  aria-describedby="basic-addon1">
+                    <input type="text" name="correta" class="form-control" placeholder="Está correto ou não"  aria-describedby="basic-addon1">
+                    <input type="text" name="idQuestao" class="form-control" placeholder="qual a referencia"  aria-describedby="basic-addon1">
+                    
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
