@@ -14,6 +14,6 @@ switch ($_SERVER["PATH_INFO"]) {
         require "alternativas.php";
         break;
     default:
-        echo "Error 404 - Seu PC vai explodir...e a página não foi encontrada.";
+        echo "Error 404 - a página não foi encontrada.";
         break;
 }

@@ -37,41 +37,45 @@ CREATE TABLE `alternativas` (
 
 -- --------------------------------------------------------
 
---
--- Estrutura da tabela `questions`
+-- Extraindo dados da tabela `alternativas`
 --
 
-CREATE TABLE `questions` (
-  `IDDesafio` int(11) NOT NULL,
-  `Desafio` varchar(300) NOT NULL,
-  `TDesafio` varchar(20) NOT NULL
+
+--
+-- Estrutura da tabela `questoes`
+--
+
+CREATE TABLE `questoes` (
+  `idQuestao` int(11) NOT NULL,
+  `enunciado` varchar(300) NOT NULL,
+  `tipo` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `questions`
+-- Extraindo dados da tabela `questoes`
 --
 
-INSERT INTO `questions` (`IDDesafio`, `Desafio`, `TDesafio`) VALUES
+INSERT INTO `questions` (`idQuestao`, `enunciado`, `tipo`) VALUES
 (3, 'bla', 'blu');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura da tabela `usuarios`
 --
 
-CREATE TABLE `users` (
-  `UserID` int(11) NOT NULL,
-  `Nome` varchar(200) NOT NULL,
-  `Email` varchar(200) NOT NULL,
-  `Senha` varchar(200) NOT NULL
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL,
+  `nome` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `senha` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `users`
+-- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `users` (`UserID`, `Nome`, `Email`, `Senha`) VALUES
+INSERT INTO `users` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 (3, 'bla', 'blu', '4e8a1f3702ea40975a6bd7b06e558498');
 
 --
@@ -83,19 +87,19 @@ INSERT INTO `users` (`UserID`, `Nome`, `Email`, `Senha`) VALUES
 --
 ALTER TABLE `alternativas`
   ADD PRIMARY KEY (`idAlternativa`),
-  ADD KEY `idQuestao` (`idQuestao`);
+  ADD KEY `alternativa_questao` (`idQuestao`);
 
 --
--- Indexes for table `questions`
+-- Indexes for table `questoes`
 --
-ALTER TABLE `questions`
-  ADD PRIMARY KEY (`IDDesafio`);
+ALTER TABLE `questoes`
+  ADD PRIMARY KEY (`idQuestao`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `usuarios`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`);
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -105,19 +109,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alternativas`
 --
 ALTER TABLE `alternativas`
-  MODIFY `idAlternativa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAlternativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `questions`
+-- AUTO_INCREMENT for table `questoes`
 --
-ALTER TABLE `questions`
-  MODIFY `IDDesafio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `questoes`
+  MODIFY `idQuestao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `usuarios`
 --
-ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -127,7 +131,7 @@ ALTER TABLE `users`
 -- Limitadores para a tabela `alternativas`
 --
 ALTER TABLE `alternativas`
-  ADD CONSTRAINT `FK_das_questoes` FOREIGN KEY (`idQuestao`) REFERENCES `questions` (`IDDesafio`);
+  ADD CONSTRAINT `FK_das_questoes` FOREIGN KEY (`idQuestao`) REFERENCES `questoes` (`idQuestao`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
