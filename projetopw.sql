@@ -30,15 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alternativas` (
   `idAlternativa` int(11) NOT NULL,
-  `texto` text NOT NULL,
-  `correta` tinyint(4) NOT NULL,
-  `idQuestao` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
--- Extraindo dados da tabela `alternativas`
---
+  `idQuestao` int(11) NOT NULL,
+  `texto` varchar(200) NOT NULL,
+  `correta` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 --
@@ -47,9 +42,9 @@ CREATE TABLE `alternativas` (
 
 CREATE TABLE `questoes` (
   `idQuestao` int(11) NOT NULL,
-  `enunciado` varchar(300) NOT NULL,
-  `tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `enunciado` varchar(200) NOT NULL,
+  `tipo` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `questoes`
@@ -69,7 +64,7 @@ CREATE TABLE `usuarios` (
   `nome` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `senha` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios`
@@ -131,7 +126,7 @@ ALTER TABLE `usuarios`
 -- Limitadores para a tabela `alternativas`
 --
 ALTER TABLE `alternativas`
-  ADD CONSTRAINT `FK_das_questoes` FOREIGN KEY (`idQuestao`) REFERENCES `questoes` (`idQuestao`);
+  ADD CONSTRAINT `alternativa_questao` FOREIGN KEY (`idQuestao`) REFERENCES `questoes` (`idQuestao`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
