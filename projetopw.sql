@@ -50,7 +50,7 @@ CREATE TABLE `questoes` (
 -- Extraindo dados da tabela `questoes`
 --
 
-INSERT INTO `questions` (`idQuestao`, `enunciado`, `tipo`) VALUES
+INSERT INTO `questoes` (`idQuestao`, `enunciado`, `tipo`) VALUES
 (3, 'bla', 'blu');
 
 -- --------------------------------------------------------
@@ -70,7 +70,7 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `users` (`idUsuario`, `nome`, `email`, `senha`) VALUES
+INSERT INTO `usuarios` (`idUsuario`, `nome`, `email`, `senha`) VALUES
 (3, 'bla', 'blu', '4e8a1f3702ea40975a6bd7b06e558498');
 
 --
