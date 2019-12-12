@@ -1,6 +1,6 @@
 <?php 
 require("verificaUsuario.php");
-include "AlternativasDAO.php";
+include "alternativasDAO.php";
 include "QuestoesDAO.php";
 
 $idQuestao = $_GET["questao"];

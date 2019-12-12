@@ -7,8 +7,8 @@ switch ($_SERVER["PATH_INFO"]) {
     case "/usuarios":
         require "usuarios.php";
         break;
-    case "/questoes":
-        require "quiz.php";
+    case "/Questoes":
+        require "Questoes.php";
         break;
     case "/alternativas";
         require "alternativas.php";

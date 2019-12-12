@@ -32,6 +32,13 @@ switch ($acao) {
 		$usuario->email = $_POST["email"];
 		$usuario->editar();
 		break;
+		
+	case 'logar':
+        $usuario = new UsuarioDAO();
+        $usuario->email = $_POST["email"];
+        $usuario->senha = $_POST["senha"];
+        $usuario->logar();
+        break;
 
 	default:
 		echo "Erro ao conectar";

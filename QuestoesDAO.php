@@ -2,8 +2,9 @@
 
 require "config.php";
 
+class QuestoesDAO
+
 {
-	class QuestoesDAO{
 	public $id;
 	public $enunciado;
 	public $tipo;

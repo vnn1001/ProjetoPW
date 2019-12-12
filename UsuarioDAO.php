@@ -55,6 +55,26 @@ class UsuarioDAO
 		}
 		return $listaDeUsuarios;
 	}
+	
+	 public function logar()
+    {
+        $sql = "SELECT * FROM usuarios WHERE
+            email='$this->email' AND
+            senha=md5('$this->senha')";
+        $rs = $this->con->query($sql);
+        if ($rs->num_rows) {
+            session_start();
+            $_SESSION["logado"] = true;
+            header("Location:/usuarios");
+        } else {
+            header("Location:/?erro=1");
+        }
+    }
+	public function sair()
+    {
+        session_destroy();
+        header("Location: /");
+    }
 }
 
 

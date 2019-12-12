@@ -23,6 +23,7 @@ include "menuLateral.php";
     <body>
 
         <div class="col-10">	
+		<?php mostrarAlerta("success");?>
 				<h3>Usuários</h3>
 				<button class="btn btn-primary" data-toggle="modal" data-target="#modalnovo">
 					<i class="fas fa-user-plus"></i>
