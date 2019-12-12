@@ -1,12 +1,12 @@
 <?php 
 
-include "AlternativasDAO.php";
+include "alternativasDAO.php";
 
 $acao = $_GET["acao"];
 
 switch ($acao) {
 	case 'inserir':
-		$alternativa = new AlternativasDAO();
+		$alternativa = new alternativasDAO();
 		$alternativa->texto = $_POST["texto"];
 		$alternativa->idQuestao = $_POST["idQuestao"];
 		if (isset($_POST["correta"])) $alternativa->correta = 1;
@@ -15,14 +15,14 @@ switch ($acao) {
 		break;
 
 	case 'apagar':
-		$alternativa = new AlternativasDAO();
+		$alternativa = new alternativasDAO();
 		$id = $_GET["id"];
 		$idQuestao = $_GET["idQuestao"];
 		$alternativa->apagar($id, $idQuestao);
 		break;
 
 	case 'editar':
-		$alternativa = new AlternativasDAO();
+		$alternativa = new alternativasDAO();
 		$alternativa->id = $_POST["id"];
 		$alternativa->texto = $_POST["texto"];
 		$alternativa->tipo = $_POST["tipo"];

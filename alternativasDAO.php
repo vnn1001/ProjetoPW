@@ -1,6 +1,6 @@
 <?php 
 
-require "config.php";
+require "Config.php";
 
 class alternativasDAO{
     
@@ -15,7 +15,7 @@ class alternativasDAO{
     public function apagar($id, $idQuestao){
 		$sql = "DELETE FROM alternativas WHERE idAlternativa=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location: \alternativas?questao=$idQuestao");
+		if ($rs) header("Location: \alternativas");
 		else echo $this->con->error;
 	}
 
@@ -24,7 +24,7 @@ class alternativasDAO{
 		$rs = $this->con->query($sql);
 
 		if ($rs) 
-			header("Location: \alternativas?questao=$this->idQuestao");
+			header("Location: \alternativas?idQuestAl=". 'this->idQuestao');
 		else 
 			echo $this->con->error;
 	}
@@ -33,7 +33,7 @@ class alternativasDAO{
 		$sql = "UPDATE alternativas SET texto='$this->texto', correta='$this->correta' WHERE idAlternativa=$this->id";
 		$rs = $this->con->query($sql);
 		if ($rs) 
-			header("Location: \alternativas?questao=$id");
+			header("Location: \alternativas");
 		else 
 			echo $this->con->error;
 	}

@@ -8,7 +8,7 @@
                         <a class="nav-link <?= ($recurso == '/usuarios')?'active':''?>" href="/usuarios">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($recurso == '/questoes')?'active':'' ?>" href="/questoes">Quiz</a>
+                        <a class="nav-link <?= ($recurso == '/questoes')?'active':'' ?>" href="/Questoes">Quiz</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= ($recurso == '/alternativas')?'active':'' ?>" href="/alternativas">Alternativas</a>

@@ -1,6 +1,6 @@
 <?php
 
-require "config.php";
+require "Config.php";
 
 class QuestoesDAO
 
@@ -18,48 +18,50 @@ class QuestoesDAO
 	public function apagar($id){
 		$sql = "DELETE FROM questoes WHERE idQuestao=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location: \questoes");
-		else echo $this->con->error;
+		session_start();
+        if ($rs) {
+            $_SESSION["success"] = "Tu conseguiu apagar!";
+        } else {
+            $_SESSION["danger"] = "não deu pra apagar isso não: ";
+        }
 	}
 
 	public function inserir(){
 		$sql = "INSERT INTO questoes VALUES (0, '$this->enunciado', '$this->tipo')";
 		$rs = $this->con->query($sql);
 
-		if ($rs) 
-			header("Location: \questoes");
-		else 
-			echo $this->con->error;
+		session_start();
+        if ($rs) {
+            $_SESSION["success"] = "Desafio inserido com Sucesso!";
+        } else {
+            $_SESSION["danger"] = "Não deu pra inserir a pergunta: ";
+        }
+        header("Location: /questoes");
 	}
 
 	public function editar(){
 		$sql = "UPDATE questoes SET enunciado='$this->enunciado', tipo='$this->tipo' WHERE idQuestao=$this->id";
 		$rs = $this->con->query($sql);
-		if ($rs) 
-			header("Location: \questoes");
-		else 
-			echo $this->con->error;
+		session_start();
+        if ($rs) {
+            $_SESSION["success"] = "Deu bom pra trocar esse desafio cara: ";
+        } else {
+            $_SESSION["danger"] = "É...então, não deu pra mudar nada não x(";
+        }
+        header("Location: /questoes");
 	}
 
 
 	public function buscar(){
-		$sql = "SELECT * FROM questoes";
-		$rs = $this->con->query($sql);
-		$lista = array();
-		while ($linha = $rs->fetch_object()){
-			$lista[] = $linha;
-		}
-		return $lista;
-	}
+	{
 
-	public function buscarPorId(){
-		$sql = "SELECT * FROM questoes WHERE idQuestao=$this->id";
-		$rs = $this->con->query($sql);
-		if ($linha = $rs->fetch_object()){
-			$this->enunciado = $linha->enunciado;
-			$this->tipo = $linha->tipo;
-		}
-
+        $sql = "SELECT * FROM questions";
+        $rs = $this->conQuiz->query($sql);
+        while ($linha = $rs->fetch_object()) {
+            $listaDePerguntas[] = $linha;
+        }
+        return $listaDePerguntas;
+    }
 	}
 }
 

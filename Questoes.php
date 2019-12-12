@@ -1,9 +1,9 @@
 <?php
 require("verificaUsuario.php");
-include "quizDAO.php";
+include "QuestoesDAO.php";
 
-$quizDAO = new quizDAO();
-$listaQuiz = ($quizDAO->buscarQuiz());
+$QuestoesDAO = new QuestoesDAO();
+$listaQuiz = ($QuestoesDAO->buscar());
 
 include "cabecalho.php";
 include "menuLateral.php";

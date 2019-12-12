@@ -20,5 +20,9 @@
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
 			</form>
 		</div>
+		<div class="my-2 my-lg-0">
+                <a class= "btn btn-primary" href="UsuariosController.php?acao=sair" role="button">Sair</a>
+            </div>
+        </div>
 	</nav>
     

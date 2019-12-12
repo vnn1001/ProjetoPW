@@ -1,5 +1,5 @@
 <?php
-require "config.php";
+require "Config.php";
 class UsuarioDAO
 {
     public $nome;
@@ -16,35 +16,51 @@ class UsuarioDAO
    public function apagar($id){
 		$sql = "DELETE FROM usuarios WHERE idUsuario=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location: /usuarios");
-		else echo $this->con->error;
-	}
+		session_start();
+        if ($rs) {
+            $_SESSION["success"] = "usuário apagado com sucesso";
+        } else {
+            $_SESSION["dangen"] = "Error Fatal...você não conseguiu se apagar ;)";
+        }
+        header("Location: /usuarios");
+    }
 
 	public function inserir(){
 		$sql = "INSERT INTO usuarios VALUES (0, '$this->nome', '$this->email', md5('$this->senha') )";
 		$rs = $this->con->query($sql);
-
-		if ($rs) 
-			header("Location: /usuarios");
-		else 
-			echo $this->con->error;
-	}
+		session_start();
+        if ($rs) {
+            $_SESSION["success"] = "usuário inserido com sucesso";
+        } else {
+            $_SESSION["danger"] = "Não foi possivel inserir esse usuário :(";
+        }
+        header("Location: /usuarios");
+    }
 
 	public function editar(){
 		$sql = "UPDATE usuarios SET nome='$this->nome', email='$this->email' WHERE idUsuario=$this->id";
 		$rs = $this->con->query($sql);
-		if ($rs) 
-			header("Location: /usuarios");
-		else 
-			echo $this->con->error;
+		session_start();
+        if($rs){
+            $_SESSION["success"] = "Nome e/ou email alterado com sucesso ;)";
+        } else{
+            $_SESSION["danger"] = "Não foi possivel alterar o nome e/ou email :";
+        }
+        header("Location: /usuarios");
+    
 	}
 
 	public function trocarSenha($id, $senha){
 		$sql = "UPDATE usuarios SET senha=md5('$senha') WHERE idUsuario=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location: /usuarios");
-		else echo $this->con->error;
-	}
+		session_start();
+        if ($rs) {
+            $_SESSION["success"] = "Senha alterada com sucesso ;)";
+        } else {
+            $_SESSION["danger"] = "Não foi possivel alterar a senha :(";
+        }
+        header("Location: /usuarios");
+    }
 
 	public function buscar(){
 		$sql = "SELECT * FROM usuarios";

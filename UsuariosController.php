@@ -39,6 +39,11 @@ switch ($acao) {
         $usuario->senha = $_POST["senha"];
         $usuario->logar();
         break;
+	
+	case 'sair':
+		$usuario = new UsuarioDAO();
+		$usuario->sair();
+		break;
 
 	default:
 		echo "Erro ao conectar";
