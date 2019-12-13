@@ -1,5 +1,6 @@
 <?php
 require "Config.php";
+
 class UsuarioDAO
 {
     public $nome;
@@ -20,7 +21,7 @@ class UsuarioDAO
         if ($rs) {
             $_SESSION["success"] = "usuário apagado com sucesso";
         } else {
-            $_SESSION["dangen"] = "Error Fatal...você não conseguiu se apagar ;)";
+            $_SESSION["danger"] = "Erro ao excluir usuario:)";
         }
         header("Location: /usuarios");
     }
@@ -32,7 +33,7 @@ class UsuarioDAO
         if ($rs) {
             $_SESSION["success"] = "usuário inserido com sucesso";
         } else {
-            $_SESSION["danger"] = "Não foi possivel inserir esse usuário :(";
+            $_SESSION["danger"] = "Erro ao inserir usuario: ";
         }
         header("Location: /usuarios");
     }
@@ -42,7 +43,7 @@ class UsuarioDAO
 		$rs = $this->con->query($sql);
 		session_start();
         if($rs){
-            $_SESSION["success"] = "Nome e/ou email alterado com sucesso ;)";
+            $_SESSION["success"] = "Nome e/ou email alterado com sucesso ";
         } else{
             $_SESSION["danger"] = "Não foi possivel alterar o nome e/ou email :";
         }

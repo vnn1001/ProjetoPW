@@ -1,8 +1,9 @@
 <?php 
-
+error_reporting (E_WARNING);
 require "Config.php";
 
-class alternativasDAO{
+class alternativasDAO
+{
     
     public $texto;
     public $correta;
@@ -10,30 +11,30 @@ class alternativasDAO{
     private $conAlternativa;
 
     function __construct(){
-        $this->conAlternativa = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+        $this->conAlternativa = mysqli_connect (DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     }
     public function apagar($id, $idQuestao){
 		$sql = "DELETE FROM alternativas WHERE idAlternativa=$id";
-		$rs = $this->con->query($sql);
-		if ($rs) header("Location: \alternativas");
+		$rs = $this->conAlternativa->query($sql);
+		if ($rs) header("Location: \alternativas?questao");
 		else echo $this->con->error;
 	}
 
 	public function inserir(){
 		$sql = "INSERT INTO alternativas VALUES (0, $this->idQuestao, '$this->texto', '$this->correta')";
-		$rs = $this->con->query($sql);
+		$rs = $this->conAlternativa->query($sql);
 
 		if ($rs) 
-			header("Location: \alternativas?idQuestAl=". 'this->idQuestao');
+			header("Location: \alternativas?questao");
 		else 
 			echo $this->con->error;
 	}
 
 	public function editar(){
 		$sql = "UPDATE alternativas SET texto='$this->texto', correta='$this->correta' WHERE idAlternativa=$this->id";
-		$rs = $this->con->query($sql);
+		$rs = $this->conAlternativa->query($sql);
 		if ($rs) 
-			header("Location: \alternativas");
+			header("Location: \alternativas?questao");
 		else 
 			echo $this->con->error;
 	}
@@ -41,7 +42,7 @@ class alternativasDAO{
 
 	public function buscar(){
 		$sql = "SELECT * FROM alternativas WHERE idQuestao=$this->idQuestao";
-		$rs = $this->con->query($sql);
+		$rs = $this->conAlternativa->query($sql);
 		$lista = array();
 		while ($linha = $rs->fetch_object()){
 			$lista[] = $linha;

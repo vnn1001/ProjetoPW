@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Nov-2019 às 02:22
+-- Generation Time: 13-Dez-2019 às 01:08
 -- Versão do servidor: 5.7.21-log
 -- versão do PHP: 7.3.1
 
@@ -35,6 +35,15 @@ CREATE TABLE `alternativas` (
   `correta` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `alternativas`
+--
+
+INSERT INTO `alternativas` (`idAlternativa`, `idQuestao`, `texto`, `correta`) VALUES
+(17, 19, 'sa', 0),
+(20, 19, 'Branco', 0);
+
+-- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `questoes`
@@ -51,7 +60,7 @@ CREATE TABLE `questoes` (
 --
 
 INSERT INTO `questoes` (`idQuestao`, `enunciado`, `tipo`) VALUES
-(3, 'bla', 'blu');
+(19, 'sdsdsd', 'c');
 
 -- --------------------------------------------------------
 
@@ -71,7 +80,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `nome`, `email`, `senha`) VALUES
-(3, 'bla', 'blu', '4e8a1f3702ea40975a6bd7b06e558498');
+(3, 'bla', 'blu', '4e8a1f3702ea40975a6bd7b06e558498'),
+(9, 'vinicius', 'vinicius.az2018@gmail.com', 'a53046a82937e40556ee3faefe95224e'),
+(11, 'a', 'a@b.c', '0cc175b9c0f1b6a831c399e269772661');
 
 --
 -- Indexes for dumped tables
@@ -104,19 +115,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `alternativas`
 --
 ALTER TABLE `alternativas`
-  MODIFY `idAlternativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idAlternativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `questoes`
 --
 ALTER TABLE `questoes`
-  MODIFY `idQuestao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idQuestao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

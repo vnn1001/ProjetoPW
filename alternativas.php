@@ -1,15 +1,15 @@
 <?php 
 require("verificaUsuario.php");
-include "alternativasDAO.php";
+
 include "QuestoesDAO.php";
 include "alternativasDAO.php";
-$alternativasDAO = new alternativasDAO();
-$alternativasDAO->idQuestao=$_GET["idQuestAl"];
-$listaDeAlternativas = ($alternativasDAO->buscarAlternativas());
+include "alertas.php";
+
+
 
 $idQuestao = $_GET["questao"];
 
-$alternativas = new AlternativasDAO();
+$alternativas = new alternativasDAO();
 $alternativas->idQuestao = $idQuestao;
 $lista = $alternativas->buscar();
 
@@ -18,9 +18,11 @@ $questoes->id = $idQuestao;
 $questoes->buscarPorId();
 
 include "cabecalho.php";
-include "menu.php";
+include "menuLateral.php";
 ?>
 <div class="container">
+		<?php mostrarAlerta("success");?>
+		<?php mostrarAlerta("danger");?>
 	
 	<h2><?= $questoes->enunciado ?></h2>
 

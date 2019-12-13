@@ -1,9 +1,10 @@
 <?php
 require("verificaUsuario.php");
 include "QuestoesDAO.php";
+include "alertas.php";
 
 $QuestoesDAO = new QuestoesDAO();
-$listaQuiz = ($QuestoesDAO->buscar());
+$lista = ($QuestoesDAO->buscar());
 
 include "cabecalho.php";
 include "menuLateral.php";
@@ -12,7 +13,9 @@ include "menuLateral.php";
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<div class="col-10">	
+			<div class="col-10">
+				<?php mostrarAlerta("success");?>
+				<?php mostrarAlerta("danger");?>
 				<h3>Questões</h3>
 				<button class="btn btn-primary" data-toggle="modal" data-target="#modalnovo">
 					<i class="fas fa-question"></i>
@@ -60,7 +63,7 @@ include "menuLateral.php";
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="QuestoesController.php?acao=inserir	" method="POST">
+					<form action="QuestoesController.php?acao=inserir" method="POST">
 						<div class="form-group">
 							<label for="nome">Enunciado</label>
 							<input type="text" name="enunciado" class="form-control" id="enunciado" placeholder="enunciado da questão">

@@ -41,6 +41,8 @@ switch ($acao) {
         break;
 	
 	case 'sair':
+		session_start();
+		session_destroy();
 		$usuario = new UsuarioDAO();
 		$usuario->sair();
 		break;
